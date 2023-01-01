@@ -28,7 +28,9 @@ def main():
 			response = urlopen(result_url)
 			data_json = json.loads(response.read())
 		except ValueError:
-			st.write("Error occured or Server is slow!")
+			st.error("Unable to fetch one of the result or Server is slow!", icon="🚨")
+			st.info('Try after sometime!', icon="ℹ️")
+			return
 		# print("Semester:", s)
 		for c in data_json:
 			c_semyr = c["semesterName"] + "-" + str(c["semesterYear"])
