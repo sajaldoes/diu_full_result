@@ -10,6 +10,7 @@ st.text("")
 id = st.text_input("Enter your Student ID", placeholder="101-15-12345")
 btn = st.button("Submit")
 
+
 def main():
 	semesters = [191, 192, 193, 201, 202, 203, 211, 212, 213, 221, 222, 223]
 	sum_points = 0
@@ -66,3 +67,6 @@ def main():
 
 if __name__ == '__main__' and id != "" or btn:
 	main()
+else:
+	st.markdown("##")
+	st.write("Copyright © 2022 Sajal Das. [[LinkedIn](https://www.linkedin.com/in/sajaldoes/)]")
