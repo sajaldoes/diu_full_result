@@ -50,12 +50,16 @@ def main():
 			sum_credit += c_credit
 
 	cg = round(sum_points/sum_credit, 2)
-	cg_text = "ID: "+ id + "     →      Total CGPA: "+ str(round(sum_points/sum_credit, 2))
-	# id_text = 
+	cg_text = "Total CGPA: "+ str(round(sum_points/sum_credit, 2))
+
+	id_text = "##### ID: "+ id + " → Total Credits: "+str(int(sum_credit))
+
 	df = pd.DataFrame.from_dict(result_dict)
-	# st.subheader(id_text)
+	st.markdown(id_text)
 	st.subheader(cg_text)
 	st.dataframe(df.style.format({"Grade Point": "{:.2f}"}))
+	df["Total Credits"] = ""
+	df.at[0,"Total Credits"]= int(sum_credit)
 	df["Total CGPA"] = ""
 	df.at[0,"Total CGPA"]= cg
 	csv = df.to_csv().encode('utf-8')
