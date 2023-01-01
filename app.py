@@ -23,10 +23,13 @@ def main():
 		"Credit": []
 	}
 	for s in semesters:
-		result_url = f"http://software.diu.edu.bd:8189/result?grecaptcha=&semesterId={s}&studentId={id}"
-		response = urlopen(result_url)
-		data_json = json.loads(response.read())
-		print("Semester:", s)
+		try:
+			result_url = f"http://software.diu.edu.bd:8189/result?grecaptcha=&semesterId={s}&studentId={id}"
+			response = urlopen(result_url)
+			data_json = json.loads(response.read())
+		except ValueError:
+			st.write("Error occured or Server is slow!")
+		# print("Semester:", s)
 		for c in data_json:
 			c_semyr = c["semesterName"] + "-" + str(c["semesterYear"])
 			c_title = c["courseTitle"]
