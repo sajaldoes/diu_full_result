@@ -12,7 +12,8 @@ btn = st.button("Submit")
 
 
 def main():
-	semesters = [191, 192, 193, 201, 202, 203, 211, 212, 213, 221, 222, 223]
+	s_sem = id.split("-")[0]
+	s = int(s_sem)
 	sum_points = 0
 	sum_credit = 0
 	result_dict = {
@@ -22,7 +23,8 @@ def main():
 		"Grade Point": [],
 		"Credit": []
 	}
-	for s in semesters:
+	count = 0
+	for i in range(0,12):
 		try:
 			result_url = f"http://software.diu.edu.bd:8189/result?grecaptcha=&semesterId={s}&studentId={id}"
 			response = urlopen(result_url)
@@ -48,7 +50,11 @@ def main():
 			
 			sum_points += c_point
 			sum_credit += c_credit
-
+		count+=1
+		if count==3:
+			count=0
+			s+=7
+		s+=1
 	cg = round(sum_points/sum_credit, 2)
 	cg_text = "Total CGPA: "+ str(round(sum_points/sum_credit, 2))
 
