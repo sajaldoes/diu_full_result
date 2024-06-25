@@ -51,7 +51,7 @@ def main():
 			sum_points += c_point
 			sum_credit += c_credit
 		count+=1
-		if count==3:
+		if s%10==3:
 			count=0
 			s+=7
 		s+=1
